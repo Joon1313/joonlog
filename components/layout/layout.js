@@ -2,7 +2,7 @@ import { Container } from "@mui/material";
 import Footer from "./footer";
 import Header from "./header";
 
-export default function MainContainer({ children }) {
+export default function Layout({ children }) {
   return (
     <>
       <Header />

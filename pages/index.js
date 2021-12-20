@@ -19,18 +19,17 @@ export default function Home({ posts }) {
 
 export const getStaticProps = async () => {
   const prisma = new PrismaClient();
-  const posts = await prisma.post.findMany();
+  const posts = await prisma.post.findMany({
+    orderBy: {
+      id: "desc",
+    },
+    take: 8,
+  });
   const newPosts = posts.map((v) => ({
     ...v,
     createdAt: JSON.stringify(v.createdAt),
     updateAt: JSON.stringify(v.updateAt),
   }));
-  console.log(newPosts);
-  // const res = await fetch(
-  //   "https://jsonplaceholder.typicode.com/posts?_start=0&_end=14"
-  // );
-  // const posts = await res.json();
-  // console.log(posts);
   return {
     props: {
       posts: newPosts,

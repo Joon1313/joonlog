@@ -1,6 +1,6 @@
-import MainContainer from "../components/layout/container";
 import "../styles/globals.scss";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Layout from "../components/layout/Layout";
 
 const theme = createTheme({
   palette: {
@@ -11,9 +11,9 @@ const theme = createTheme({
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
-      <MainContainer>
+      <Layout>
         <Component {...pageProps} />
-      </MainContainer>
+      </Layout>
     </ThemeProvider>
   );
 }
