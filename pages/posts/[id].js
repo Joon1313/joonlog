@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import dynamic from "next/dynamic";
+import { Typography } from "@mui/material";
 // import { Viewer } from "@toast-ui/react-editor";
 
 const Viewer = dynamic(() => import("../../components/common/viewer"), {
@@ -7,7 +8,19 @@ const Viewer = dynamic(() => import("../../components/common/viewer"), {
 });
 
 export default function Post({ post }) {
-  return <Viewer content={post.content} />;
+  return (
+    <article className="articleWrap">
+      <Typography
+        variant="h4"
+        component="h1"
+        align="center"
+        className="postTitle"
+      >
+        {post.title}
+      </Typography>
+      <Viewer content={post.content} />
+    </article>
+  );
 }
 
 export const getStaticPaths = async () => {
@@ -23,7 +36,7 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const id = +params.id;
+  const id = params.id;
   const prisma = new PrismaClient();
   const post = await prisma.post.findUnique({
     where: {

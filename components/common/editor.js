@@ -8,7 +8,6 @@ export default function tuiEditor(props) {
       height="800px"
       initialEditType="markdown"
       initialValue="내용"
-      previewStyle="vertical"
       theme="dark"
       ref={props.editorRef}
     />

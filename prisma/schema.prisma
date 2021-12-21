@@ -2,21 +2,22 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongoDb"]
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider = "mongodb"
+  url      = env("DATABASE_URL_MONGO")
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
 
   title   String
   content String
-  tag     String
+  tag     String[]
 
 }

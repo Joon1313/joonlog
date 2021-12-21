@@ -16,6 +16,8 @@ export default async function handler(req, res) {
         title,
         content,
         tag,
+        createdAt: new Date(),
+        updateAt: new Date(),
       },
     });
     res.status(200).json({ message: "success", response: result });

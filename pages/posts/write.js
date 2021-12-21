@@ -29,15 +29,18 @@ export default function Write() {
   const router = useRouter();
   const getContent = () => {
     const editorInstance = editorRef.current.getInstance();
-    const html = editorInstance.getMarkdown();
-    return html;
+    const markdown = editorInstance.getMarkdown();
+    // console.log(editorInstance.getSelectedText(0, 1));
+    // const html = editorInstance.getHTML();
+    return markdown;
   };
   const getTitle = () => {
     const title = titleRef.current.value;
     return title;
   };
   const getTag = () => {
-    const tag = tagRef.current.value;
+    const tagValue = tagRef.current.value;
+    const tag = tagValue.split(",");
     return tag;
   };
   const goHome = () => {
@@ -46,7 +49,8 @@ export default function Write() {
   const submit = async () => {
     const title = getTitle();
     const content = getContent();
-    const tag = "tag";
+    const tag = getTag();
+    // return;
     try {
       const response = await postFetch("/api/posts", title, content, tag);
       console.log(response);

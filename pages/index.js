@@ -23,7 +23,7 @@ export const getStaticProps = async () => {
     orderBy: {
       id: "desc",
     },
-    take: 8,
+    take: 12,
   });
   const newPosts = posts.map((v) => ({
     ...v,

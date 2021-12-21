@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: #121212;
+  background-color: #111111;
 }
 //layout
 #__next {
@@ -20,7 +20,7 @@ body {
   justify-content: center;
   padding: 15px 0;
   color: #fff;
-  background-color: #161616;
+  background-color: #222222;
   margin-top: 20px;
   a {
     padding: 0 8px;
@@ -32,10 +32,60 @@ body {
   height: 80px;
   color: #eee;
   font-size: 30px;
-  background-color: #161616;
+  background-color: #222222;
 }
 #main {
   margin-top: 20px;
+}
+//card
+.cardWrap {
+  height: 170px;
+}
+.cardTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.cardContent {
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  height: 4rem;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+.cardBox {
+  padding-bottom: 0px !important;
+}
+
+.cardBottom {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+//article
+.articleWrap {
+  max-width: 700px;
+  margin: auto;
+}
+
+//post
+.postTitle {
+  padding: 70px 0;
+  font-weight: bold !important;
+  color: #eee;
+}
+
+//tag
+
+.tag {
+  color: #70ade1;
+  background-color: #111111;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin-left: 5px;
 }
 .divider {
   margin: 6px 0;
