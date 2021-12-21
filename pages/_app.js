@@ -1,6 +1,6 @@
 import "../styles/globals.scss";
 import { createTheme, ThemeProvider } from "@mui/material";
-import Layout from "../components/layout/Layout";
+import Layout from "../components/layout/layout";
 
 const theme = createTheme({
   palette: {

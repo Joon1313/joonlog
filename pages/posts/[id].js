@@ -1,7 +1,13 @@
 import { PrismaClient } from "@prisma/client";
+import dynamic from "next/dynamic";
+// import { Viewer } from "@toast-ui/react-editor";
+
+const Viewer = dynamic(() => import("../../components/common/viewer"), {
+  ssr: false,
+});
 
 export default function Post({ post }) {
-  return <p style={{ color: "#fff" }}>{post.title}</p>;
+  return <Viewer content={post.content} />;
 }
 
 export const getStaticPaths = async () => {
@@ -29,11 +35,5 @@ export const getStaticProps = async ({ params }) => {
     createdAt: JSON.stringify(post.createdAt),
     updateAt: JSON.stringify(post.updateAt),
   };
-  // params contains the post `id`.
-  // If the route is like /posts/1, then params.id is 1
-  // const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
-  // const post = await res.json();
-
-  // Pass post data to the page via props
   return { props: { post: newPost } };
 };

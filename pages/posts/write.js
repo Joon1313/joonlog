@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Send } from "@mui/icons-material";
 import { Input, Button } from "@mui/material";
 import { useRouter } from "next/router";
@@ -7,8 +7,7 @@ const ariaLabel = { "aria-label": "description" };
 const Editor = dynamic(() => import("../../components/common/editor"), {
   ssr: false,
 });
-const postCall = async (url, title, content, tag) => {
-  console.log(title, content, tag);
+const postFetch = async (url, title, content, tag) => {
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -26,15 +25,20 @@ const postCall = async (url, title, content, tag) => {
 export default function Write() {
   const editorRef = useRef(null);
   const titleRef = useRef(null);
+  const tagRef = useRef(null);
   const router = useRouter();
   const getContent = () => {
     const editorInstance = editorRef.current.getInstance();
-    const html = editorInstance.getHTML();
+    const html = editorInstance.getMarkdown();
     return html;
   };
   const getTitle = () => {
     const title = titleRef.current.value;
     return title;
+  };
+  const getTag = () => {
+    const tag = tagRef.current.value;
+    return tag;
   };
   const goHome = () => {
     router.push("/");
@@ -44,7 +48,7 @@ export default function Write() {
     const content = getContent();
     const tag = "tag";
     try {
-      const response = await postCall("/api/posts", title, content, tag);
+      const response = await postFetch("/api/posts", title, content, tag);
       console.log(response);
       if (!response.ok) throw response;
       goHome();
@@ -58,6 +62,13 @@ export default function Write() {
         defaultValue="제목"
         inputProps={ariaLabel}
         inputRef={titleRef}
+        fullWidth
+        style={{ marginBottom: "10px", height: "70px", fontSize: "26px" }}
+      />
+      <Input
+        defaultValue="태그"
+        inputProps={ariaLabel}
+        inputRef={tagRef}
         fullWidth
         style={{ marginBottom: "10px" }}
       />
