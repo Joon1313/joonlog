@@ -1,12 +1,14 @@
 import {
   Card as MuiCard,
-  CardContent,
-  Typography,
+  CardContent as MuiCardContent,
   Grid,
-  Divider,
 } from "@mui/material";
-import Link from "next/link";
-import { getKrDate } from "../../controller/post";
+
+import CardContent from "./cardContent";
+import CardTitle from "./cardTitle";
+
+import styles from "../../styles/Card.module.scss";
+import CardBottom from "./cardBottom";
 
 export default function Card(props) {
   const { posts } = props;
@@ -15,42 +17,12 @@ export default function Card(props) {
       {posts.length > 0 &&
         posts.map((post) => (
           <Grid item xs={12} sm={6} md={4} key={post.id} component="article">
-            <MuiCard className="cardWrap">
-              <CardContent className="cardBox">
-                <Link href={`/posts/${post.id}`} passHref={true}>
-                  <Typography
-                    gutterBottom
-                    variant="h5"
-                    component="div"
-                    className="cardTitle"
-                  >
-                    {post.title}
-                  </Typography>
-                </Link>
-                <Typography
-                  variant="subtitle2"
-                  color="text.secondary"
-                  className="cardContent"
-                >
-                  {post.content}
-                </Typography>
-                <div className="cardBottom">
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    className="cardTime"
-                  >
-                    <time>{getKrDate(post.createdAt)}</time>
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {post.tag.map((v) => (
-                      <span className="tag" key={v}>
-                        {v}
-                      </span>
-                    ))}
-                  </Typography>
-                </div>
-              </CardContent>
+            <MuiCard className={styles.cardWrap}>
+              <MuiCardContent className={styles.cardBox}>
+                <CardTitle title={post.title} postId={post.id} />
+                <CardContent content={post.content} />
+                <CardBottom createdAt={post.createdAt} tags={post.tag} />
+              </MuiCardContent>
             </MuiCard>
           </Grid>
         ))}

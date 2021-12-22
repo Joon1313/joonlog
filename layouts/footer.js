@@ -1,6 +1,6 @@
 import { GitHub } from "@mui/icons-material";
 import Image from "next/image";
-import Notion from "../icon/notion";
+import Notion from "../components/icon/notion";
 
 export default function Footer() {
   return (

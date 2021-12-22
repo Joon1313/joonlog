@@ -1,0 +1,37 @@
+//card
+.cardWrap {
+  height: 170px;
+  border-radius: 15px;
+}
+.cardTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.cardContent {
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  height: 4rem;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+.cardBox {
+  padding-bottom: 0px !important;
+}
+
+.cardBottom {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag {
+  color: #70ade1;
+  background-color: #111111;
+  border-radius: 15px;
+  padding: 5px 10px;
+  margin-left: 5px;
+}

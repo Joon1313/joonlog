@@ -1,3 +1,23 @@
-#buttonWrap {
-  margin-top: 10px;
+//article
+.articleWrap {
+  max-width: 700px;
+  margin: auto;
+}
+
+//post
+.postTitle {
+  margin-top: 70px !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1px solid grey;
+  font-weight: bold !important;
+  color: #eee;
+}
+
+.description {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 70px;
+  padding-left: 10px;
+  padding-right: 5px;
 }

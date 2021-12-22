@@ -37,59 +37,7 @@ body {
 #main {
   margin-top: 20px;
 }
-//card
-.cardWrap {
-  height: 170px;
-}
-.cardTitle {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: pointer;
-}
-.cardContent {
-  -webkit-line-clamp: 3;
-  overflow: hidden;
-  -webkit-box-orient: vertical;
-  height: 4rem;
-  word-break: break-word;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-}
-.cardBox {
-  padding-bottom: 0px !important;
-}
 
-.cardBottom {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-//article
-.articleWrap {
-  max-width: 700px;
-  margin: auto;
-}
-
-//post
-.postTitle {
-  padding: 70px 0;
-  font-weight: bold !important;
-  color: #eee;
-}
-
-//tag
-
-.tag {
-  color: #70ade1;
-  background-color: #111111;
-  border-radius: 15px;
-  padding: 5px 10px;
-  margin-left: 5px;
-}
-.divider {
-  margin: 6px 0;
-}
 a {
   color: inherit;
   text-decoration: none;
@@ -97,4 +45,22 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.toastui-editor-contents {
+  font-size: 16px !important;
+}
+
+.operator {
+  background: initial !important;
+  color: #fff !important;
+}
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #e15d5d !important;
 }

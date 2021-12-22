@@ -1,7 +1,12 @@
-import { PrismaClient } from "@prisma/client";
 import dynamic from "next/dynamic";
+import { PrismaClient } from "@prisma/client";
 import { Typography } from "@mui/material";
-// import { Viewer } from "@toast-ui/react-editor";
+
+import Comment from "../../components/common/comment";
+import styles from "../../styles/Post.module.scss";
+import Tag from "../../components/common/tag";
+import Date from "../../components/common/date";
+import Head from "next/head";
 
 const Viewer = dynamic(() => import("../../components/common/viewer"), {
   ssr: false,
@@ -9,17 +14,29 @@ const Viewer = dynamic(() => import("../../components/common/viewer"), {
 
 export default function Post({ post }) {
   return (
-    <article className="articleWrap">
-      <Typography
-        variant="h4"
-        component="h1"
-        align="center"
-        className="postTitle"
-      >
-        {post.title}
-      </Typography>
-      <Viewer content={post.content} />
-    </article>
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.title} />
+        <meta name="keywords" content={post.tag} />
+      </Head>
+      <article className={styles.articleWrap}>
+        <Typography
+          variant="h4"
+          component="h1"
+          align="center"
+          className={styles.postTitle}
+        >
+          {post.title}
+        </Typography>
+        <div className={styles.description}>
+          <Date createdAt={post.createdAt} />
+          <Tag tags={post.tag} />
+        </div>
+        <Viewer content={post.content} />
+        <Comment repo="Joon1313/camlog-comments" />
+      </article>
+    </>
   );
 }
 
