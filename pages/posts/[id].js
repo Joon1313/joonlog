@@ -52,7 +52,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
@@ -69,5 +69,5 @@ export const getStaticProps = async ({ params }) => {
     createdAt: JSON.stringify(post.createdAt),
     updateAt: JSON.stringify(post.updateAt),
   };
-  return { props: { post: newPost }, revalidate: 60 };
+  return { props: { post: newPost } };
 };
