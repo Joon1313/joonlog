@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { PrismaClient } from "@prisma/client";
 import { Typography } from "@mui/material";
-
+import { useRouter } from "next/router";
 import Comment from "../../components/common/comment";
 import styles from "../../styles/Post.module.scss";
 import Tag from "../../components/common/tag";
@@ -13,6 +13,10 @@ const Viewer = dynamic(() => import("../../components/common/viewer"), {
 });
 
 export default function Post({ post }) {
+  const router = useRouter();
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
       <Head>
@@ -48,7 +52,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
@@ -65,5 +69,5 @@ export const getStaticProps = async ({ params }) => {
     createdAt: JSON.stringify(post.createdAt),
     updateAt: JSON.stringify(post.updateAt),
   };
-  return { props: { post: newPost } };
+  return { props: { post: newPost }, revalidate: 60 };
 };
