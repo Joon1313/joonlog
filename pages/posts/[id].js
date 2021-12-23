@@ -52,7 +52,7 @@ export const getStaticPaths = async () => {
   }));
   return {
     paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -64,6 +64,11 @@ export const getStaticProps = async ({ params }) => {
       id,
     },
   });
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
   const newPost = {
     ...post,
     createdAt: JSON.stringify(post.createdAt),
