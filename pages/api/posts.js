@@ -8,6 +8,8 @@ export default async function handler(req, res) {
       .status(405)
       .json({ message: `Method ${req.method} Not Allowed` });
   }
+  if (req.cookies.auth !== "camon")
+    return res.status(401).json({ message: "unauthorized" });
   if (!title || !content || !tag)
     return res.status(400).json({ message: "fail" });
   try {

@@ -21,3 +21,11 @@ model Post {
   tag     String[]
 
 }
+
+model Admin {
+  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  createdAt DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  user_id   String   @unique
+  password  String
+}
