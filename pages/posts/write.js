@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Send } from "@mui/icons-material";
 import { Input, Button } from "@mui/material";
 import { useRouter } from "next/router";
@@ -27,6 +27,7 @@ export default function Write() {
   const titleRef = useRef(null);
   const tagRef = useRef(null);
   const router = useRouter();
+
   const getContent = () => {
     const editorInstance = editorRef.current.getInstance();
     const markdown = editorInstance.getMarkdown();
@@ -60,6 +61,13 @@ export default function Write() {
       alert(err.status);
     }
   };
+  useEffect(() => {
+    (async () => {
+      await fetch("/api/auth").then((res) => {
+        if (res.status !== 307) router.push("/");
+      });
+    })();
+  }, []);
   return (
     <>
       <Input
