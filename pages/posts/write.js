@@ -89,7 +89,7 @@ export default function Write() {
         fullWidth
         style={{ marginBottom: "10px" }}
       />
-      <Editor editorRef={editorRef} title={getTitle()} />
+      <Editor editorRef={editorRef} title={getTitle} />
       <div style={{ marginTop: "20px", textAlign: "center" }}>
         <Button onClick={submit} variant="contained" endIcon={<Send />}>
           제출하기
