@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   if (!admin) res.status(404).json({ message: "not found admin" });
   try {
     if (await argon2.verify(admin.password, password)) {
-      const token = jwt.sign({ _id: user_id }, "camon");
+      const token = jwt.sign({ _id: user_id }, process.env.SECRET_KEY);
       res.setHeader(
         "Set-Cookie",
         `auth=${token}; path=/; httpOnly=true; max-age=999999999;`

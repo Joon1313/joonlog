@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export default async function handler(req, res) {
   const token = req.cookies.auth;
   try {
-    const auth = jwt.verify(token, "camon");
+    const auth = jwt.verify(token, process.env.SECRET_KEY);
     const user = prisma.admin.findUnique({
       where: {
         user_id: auth._id,
