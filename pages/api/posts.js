@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const { title, content, tag } = req.body;
+  const { title, content, tag, preview } = req.body;
   if (req.method !== "POST") {
     return res
       .status(405)
@@ -18,6 +18,7 @@ export default async function handler(req, res) {
         title,
         content,
         tag,
+        preview,
         createdAt: new Date(),
         updateAt: new Date(),
       },

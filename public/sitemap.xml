@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://camlog.vercel.app</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.273Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/login</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/posts/61c3288d2f00c8d05d0f2faa</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/posts/61c336d590766ec6a813c61e</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/posts/61c3375327e7a606d0cfd413</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/posts/61c42b7d756211ddd8d23d45</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/posts/61c43075baca6e43595ee240</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
-<url><loc>https://camlog.vercel.app/posts/61c5c15e280cce4f062dbee9</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-29T14:52:07.274Z</lastmod></url>
+<url><loc>https://camlog.vercel.app</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/login</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/posts/61c3288d2f00c8d05d0f2faa</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/posts/61c336d590766ec6a813c61e</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/posts/61c3375327e7a606d0cfd413</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/posts/61c42b7d756211ddd8d23d45</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/posts/61c43075baca6e43595ee240</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
+<url><loc>https://camlog.vercel.app/posts/61c5c15e280cce4f062dbee9</loc><changefreq>daily</changefreq><priority>0.7</priority><lastmod>2021-12-30T15:55:12.269Z</lastmod></url>
 </urlset>

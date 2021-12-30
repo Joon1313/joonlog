@@ -7,7 +7,7 @@ const ariaLabel = { "aria-label": "description" };
 const Editor = dynamic(() => import("../../components/common/editor"), {
   ssr: false,
 });
-const postFetch = async (url, title, content, tag) => {
+const postFetch = async (url, title, content, tag, preview) => {
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -17,6 +17,7 @@ const postFetch = async (url, title, content, tag) => {
       title,
       content,
       tag,
+      preview,
     }),
   });
   return response;
@@ -31,9 +32,12 @@ export default function Write() {
   const getContent = () => {
     const editorInstance = editorRef.current.getInstance();
     const markdown = editorInstance.getMarkdown();
-    // console.log(editorInstance.getSelectedText(0, 1));
-    // const html = editorInstance.getHTML();
     return markdown;
+  };
+  const getPreview = () => {
+    const editorInstance = editorRef.current.getInstance();
+    const preview = editorInstance.getSelectedText();
+    return preview;
   };
   const getTitle = () => {
     const title = titleRef.current.value;
@@ -51,23 +55,24 @@ export default function Write() {
     const title = getTitle();
     const content = getContent();
     const tag = getTag();
+    const preview = getPreview();
     // return;
     try {
-      const response = await postFetch("/api/posts", title, content, tag);
+      const response = await postFetch(
+        "/api/posts",
+        title,
+        content,
+        tag,
+        preview
+      );
       console.log(response);
       if (!response.ok) throw response;
-      goHome();
+      // goHome();
     } catch (err) {
       alert(err.status);
     }
   };
-  useEffect(() => {
-    (async () => {
-      await fetch("/api/auth").then((res) => {
-        if (res.status !== 307) router.push("/");
-      });
-    })();
-  }, []);
+
   return (
     <>
       <Input
@@ -84,7 +89,7 @@ export default function Write() {
         fullWidth
         style={{ marginBottom: "10px" }}
       />
-      <Editor editorRef={editorRef} />
+      <Editor editorRef={editorRef} title={getTitle()} />
       <div style={{ marginTop: "20px", textAlign: "center" }}>
         <Button onClick={submit} variant="contained" endIcon={<Send />}>
           제출하기

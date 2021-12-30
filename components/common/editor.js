@@ -6,6 +6,7 @@ import Prism from "prismjs";
 import codeSyntaxHighlight from "@toast-ui/editor-plugin-code-syntax-highlight/dist/toastui-editor-plugin-code-syntax-highlight-all.js";
 import "prismjs/components/prism-clojure.js";
 import { Editor } from "@toast-ui/react-editor";
+import { makeParams, uploadImage } from "../../libs/s3Common";
 export default function tuiEditor(props) {
   return (
     <Editor
@@ -15,6 +16,14 @@ export default function tuiEditor(props) {
       theme="dark"
       plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
       ref={props.editorRef}
+      hooks={{
+        addImageBlobHook: async (blob, callback) => {
+          const param = makeParams(blob, props.title);
+          const uploadedImageURL = await uploadImage(param);
+          callback(uploadedImageURL, "img");
+          return false;
+        },
+      }}
     />
   );
 }
