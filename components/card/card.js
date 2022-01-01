@@ -20,7 +20,7 @@ export default function Card(props) {
             <MuiCard className={styles.cardWrap}>
               <MuiCardContent className={styles.cardBox}>
                 <CardTitle title={post.title} postId={post.id} />
-                <CardContent content={post.content} />
+                <CardContent content={post.preview} />
                 <CardBottom createdAt={post.createdAt} tags={post.tag} />
               </MuiCardContent>
             </MuiCard>

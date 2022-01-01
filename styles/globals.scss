@@ -64,3 +64,21 @@ a {
 .token.deleted {
   color: #e15d5d !important;
 }
+.toastui-editor-contents h2 {
+  color: #82b1ff !important;
+}
+.toastui-editor-dark .toastui-editor-contents blockquote {
+  border-color: #1de9b6 !important;
+  background: black !important;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.toastui-editor-dark .toastui-editor-contents blockquote p {
+  color: #eee !important;
+  font-weight: 600;
+}
+
+.toastui-editor-contents strong {
+  color: #7c4dff !important;
+}

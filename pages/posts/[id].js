@@ -21,8 +21,10 @@ export default function Post({ post }) {
     <>
       <Head>
         <title>{post.title}</title>
-        <meta name="description" content={post.title} />
+        <meta name="description" content={post.preview} />
         <meta name="keywords" content={post.tag} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.preview} />
       </Head>
       <article className={styles.articleWrap}>
         <Typography

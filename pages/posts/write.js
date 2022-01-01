@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { Send } from "@mui/icons-material";
 import { Input, Button } from "@mui/material";
 import { useRouter } from "next/router";
+import Head from "next/head";
 const ariaLabel = { "aria-label": "description" };
 const Editor = dynamic(() => import("../../components/common/editor"), {
   ssr: false,
@@ -75,6 +76,9 @@ export default function Write() {
 
   return (
     <>
+      <Head>
+        <title>Camlog - write</title>
+      </Head>
       <Input
         defaultValue="제목"
         inputProps={ariaLabel}
