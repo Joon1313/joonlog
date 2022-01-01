@@ -19,6 +19,22 @@ class MyDocument extends Document {
           <meta name="Keywords" content="Camlog" />
           <meta name="author" content="Camon" />
           <link rel="icon" href="/favicon.ico" />
+
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-LQHP0K5JZH"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-LQHP0K5JZH');
+          `,
+            }}
+          />
         </Head>
         <body>
           <Main />

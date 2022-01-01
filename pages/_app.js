@@ -1,6 +1,8 @@
 import "../styles/globals.scss";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Layout from "../layouts/layout";
+import { useRouter } from "next/app";
+import { pageview } from "../libs/gTag";
 
 const theme = createTheme({
   palette: {
@@ -9,6 +11,18 @@ const theme = createTheme({
 });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <ThemeProvider theme={theme}>
       <Layout>
