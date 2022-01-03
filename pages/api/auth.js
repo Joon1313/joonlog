@@ -3,9 +3,10 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const token = req.cookies.auth;
+  const token = req.cookies.auth || req.body.token;
   try {
     const auth = jwt.verify(token, process.env.SECRET_KEY);
+    console.log(auth);
     const user = await prisma.admin.findUnique({
       where: {
         user_id: auth._id,

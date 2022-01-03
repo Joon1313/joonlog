@@ -1,9 +1,10 @@
 import dynamic from "next/dynamic";
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Send } from "@mui/icons-material";
 import { Input, Button } from "@mui/material";
 import { useRouter } from "next/router";
 import Head from "next/head";
+
 const ariaLabel = { "aria-label": "description" };
 const Editor = dynamic(() => import("../../components/common/editor"), {
   ssr: false,
@@ -23,8 +24,20 @@ const postFetch = async (url, title, content, tag, preview) => {
   });
   return response;
 };
-export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:3000/api/auth");
+
+export async function getServerSideProps(ctx) {
+  const token = ctx.req.cookies.auth;
+  // const res = await fetch("https://camlog.vercel.app/api/auth");
+  const res = await fetch("https://camlog.vercel.app/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      token,
+    }),
+  });
+  const status = await res.status;
   if (status === 401) {
     return {
       redirect: {

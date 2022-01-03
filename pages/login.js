@@ -1,10 +1,21 @@
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import Head from "next/head";
 import { TextField, Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
 
-export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:3000/api/auth");
+export async function getServerSideProps(ctx) {
+  const token = ctx.req.cookies.auth;
+  // const res = await fetch("https://camlog.vercel.app/api/auth");
+  const res = await fetch("https://camlog.vercel.app/api/auth", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      token,
+    }),
+  });
+  // console.log(res);
   const status = await res.status;
   if (status === 200) {
     return {

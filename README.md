@@ -1,6 +1,8 @@
-# Camlog
+# 🐈 Camlog
 
-## 사용한 기술스택
+## 개인 블로그
+
+## 🔨 Skill
 
 - Nextjs
 - Prisma
