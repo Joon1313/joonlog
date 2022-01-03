@@ -23,6 +23,20 @@ const postFetch = async (url, title, content, tag, preview) => {
   });
   return response;
 };
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:3000/api/auth");
+  if (status === 401) {
+    return {
+      redirect: {
+        destination: "/login",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
 
 export default function Write() {
   const editorRef = useRef(null);

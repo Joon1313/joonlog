@@ -3,6 +3,22 @@ import Head from "next/head";
 import { TextField, Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
 
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:3000/api/auth");
+  const status = await res.status;
+  if (status === 200) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
+
 export default function Login() {
   const idRef = useRef();
   const passwordRef = useRef();
@@ -21,13 +37,6 @@ export default function Login() {
     }
   };
 
-  // useEffect(() => {
-  //   (async () => {
-  //     await fetch("/api/auth").then((res) => {
-  //       if (res.status === 307) router.push("/");
-  //     });
-  //   })();
-  // }, []);
   return (
     <>
       <Head>

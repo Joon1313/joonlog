@@ -6,13 +6,13 @@ export default async function handler(req, res) {
   const token = req.cookies.auth;
   try {
     const auth = jwt.verify(token, process.env.SECRET_KEY);
-    const user = prisma.admin.findUnique({
+    const user = await prisma.admin.findUnique({
       where: {
         user_id: auth._id,
       },
     });
-    if (user) res.status(307).json({ message: "auth success" });
+    if (user.user_id) res.status(200).json({ user: user.user_id });
   } catch {
-    res.status(200).json({ message: "not auth" });
+    res.status(401).json({ message: "not auth" });
   }
 }
