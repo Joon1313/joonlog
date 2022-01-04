@@ -95,7 +95,7 @@ export default function Write() {
       );
       console.log(response);
       if (!response.ok) throw response;
-      // goHome();
+      goHome();
     } catch (err) {
       alert(err.status);
     }
