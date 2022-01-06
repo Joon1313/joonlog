@@ -3,9 +3,9 @@ import { Typography } from "@mui/material";
 import styles from "../../styles/Card.module.scss";
 
 export default function CardTitle(props) {
-  const { title, postId } = props;
+  const { title, slug } = props;
   return (
-    <Link href={`/posts/${postId}`} passHref={true}>
+    <Link href={`/posts/${slug}`} passHref={true}>
       <Typography
         gutterBottom
         variant="h5"

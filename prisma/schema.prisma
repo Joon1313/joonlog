@@ -19,6 +19,7 @@ model Post {
   title   String
   content String
   preview String
+  slug    String   @unique
   tag     String[]
 
 }

@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
-  const { title, content, tag, preview } = req.body;
+  const { title, content, tag, preview, slug } = req.body;
   const token = req.cookies.auth;
   if (req.method !== "POST") {
     return res
@@ -21,6 +21,7 @@ export default async function handler(req, res) {
         content,
         tag,
         preview,
+        slug,
         createdAt: new Date(),
         updateAt: new Date(),
       },

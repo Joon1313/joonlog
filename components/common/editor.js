@@ -8,17 +8,22 @@ import "prismjs/components/prism-clojure.js";
 import { Editor } from "@toast-ui/react-editor";
 import { makeParams, uploadImage } from "../../libs/s3Common";
 export default function tuiEditor(props) {
+  const getRefValue = (ref) => {
+    const value = ref.current.value;
+    return value;
+  };
+
   return (
     <Editor
       height="800px"
       initialEditType="markdown"
-      initialValue="내용"
+      initialValue={props.value ? props.value : "내용"}
       theme="dark"
       plugins={[[codeSyntaxHighlight, { highlighter: Prism }]]}
       ref={props.editorRef}
       hooks={{
         addImageBlobHook: async (blob, callback) => {
-          const param = makeParams(blob, props.title);
+          const param = makeParams(blob, getRefValue(props.title));
           const uploadedImageURL = await uploadImage(param);
           callback(uploadedImageURL, "img");
           return false;

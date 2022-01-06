@@ -1,6 +1,7 @@
 import "../styles/globals.scss";
 import { createTheme, ThemeProvider } from "@mui/material";
 import Layout from "../layouts/layout";
+import Head from "next/head";
 // import { useRouter } from "next/router";
 // import { pageview } from "../libs/gTag";
 // import { useEffect } from "react";
@@ -25,11 +26,16 @@ function MyApp({ Component, pageProps }) {
   //   };
   // }, [router.events]);
   return (
-    <ThemeProvider theme={theme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </>
   );
 }
 

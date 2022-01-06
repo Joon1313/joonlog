@@ -2,13 +2,13 @@ import dynamic from "next/dynamic";
 import { PrismaClient } from "@prisma/client";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
-import Comment from "../../components/common/comment";
-import styles from "../../styles/Post.module.scss";
-import Tag from "../../components/common/tag";
-import Date from "../../components/common/date";
+import Comment from "../../../components/common/comment";
+import styles from "../../../styles/Post.module.scss";
+import Tag from "../../../components/common/tag";
+import Date from "../../../components/common/date";
 import Head from "next/head";
 
-const Viewer = dynamic(() => import("../../components/common/viewer"), {
+const Viewer = dynamic(() => import("../../../components/common/viewer"), {
   ssr: false,
 });
 
@@ -50,7 +50,7 @@ export const getStaticPaths = async () => {
   const prisma = new PrismaClient();
   const posts = await prisma.post.findMany();
   const paths = posts.map((post) => ({
-    params: { id: post.id.toString() },
+    params: { slug: post.slug },
   }));
   return {
     paths,
@@ -59,11 +59,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
-  const id = params.id;
+  const slug = params.slug;
   const prisma = new PrismaClient();
   const post = await prisma.post.findUnique({
     where: {
-      id,
+      slug,
     },
   });
   const newPost = {

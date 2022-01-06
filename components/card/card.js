@@ -19,7 +19,7 @@ export default function Card(props) {
           <Grid item xs={12} sm={6} md={4} key={post.id} component="article">
             <MuiCard className={styles.cardWrap}>
               <MuiCardContent className={styles.cardBox}>
-                <CardTitle title={post.title} postId={post.id} />
+                <CardTitle title={post.title} slug={post.slug} />
                 <CardContent content={post.preview} />
                 <CardBottom createdAt={post.createdAt} tags={post.tag} />
               </MuiCardContent>
