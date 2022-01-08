@@ -67,6 +67,10 @@ export default function Write() {
     const value = ref.current.value;
     return value;
   };
+  const getTitle = () => {
+    const value = titleRef.current.value;
+    return value;
+  };
   const goHome = () => {
     router.push("/");
   };
@@ -120,7 +124,7 @@ export default function Write() {
           style={{ marginBottom: "10px", width: "45%" }}
         />
       </div>
-      <Editor editorRef={editorRef} titleRef={titleRef} />
+      <Editor editorRef={editorRef} getTitle={getTitle} />
       <div style={{ marginTop: "20px", textAlign: "center" }}>
         <Button onClick={submit} variant="contained" endIcon={<Send />}>
           제출하기

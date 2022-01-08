@@ -6,7 +6,7 @@ const S3_URL = "https://camlogs3.s3.ap-northeast-2.amazonaws.com/";
 const makeParams = (blob, title) => {
   const param = {
     Bucket: "camlogs3",
-    Key: `${title()}/${blob.name}`,
+    Key: `${title}/${blob.name}`,
     Body: blob,
     ContentType: blob.type,
   };
