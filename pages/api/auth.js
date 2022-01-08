@@ -1,19 +1,12 @@
-import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { getLoginSession } from "../../libs/auth";
+import { findUser } from "../../libs/user";
 
 export default async function handler(req, res) {
-  const token = req.cookies.auth || req.body.token;
   try {
-    const auth = jwt.verify(token, process.env.SECRET_KEY);
-    console.log(auth);
-    const user = await prisma.admin.findUnique({
-      where: {
-        user_id: auth._id,
-      },
-    });
-    if (user.user_id) res.status(200).json({ user: user.user_id });
-  } catch {
-    res.status(401).json({ message: "not auth" });
+    const session = await getLoginSession(req);
+    const user = await findUser(session._id);
+    res.status(200).json({ user, isLoggedIn: true });
+  } catch (err) {
+    res.status(401).json({ isLoggedIn: false, err });
   }
 }

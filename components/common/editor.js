@@ -19,7 +19,6 @@ export default function tuiEditor(props) {
       hooks={{
         addImageBlobHook: async (blob, callback) => {
           const param = makeParams(blob, props.getTitle());
-          console.log(param);
           const uploadedImageURL = await uploadImage(param);
           callback(uploadedImageURL, "img");
           return false;

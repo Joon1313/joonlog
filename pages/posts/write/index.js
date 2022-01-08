@@ -127,7 +127,7 @@ export default function Write() {
       <Editor editorRef={editorRef} getTitle={getTitle} />
       <div style={{ marginTop: "20px", textAlign: "center" }}>
         <Button onClick={submit} variant="contained" endIcon={<Send />}>
-          제출하기
+          작성
         </Button>
       </div>
     </>
