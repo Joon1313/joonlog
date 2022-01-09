@@ -10,7 +10,7 @@ export default function Date(props) {
       color="text.secondary"
       className={styles.cardtime}
     >
-      <time>{getKrDate(createdAt)}</time>
+      <time dateTime={createdAt}>{getKrDate(createdAt)}</time>
     </Typography>
   );
 }

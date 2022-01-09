@@ -86,3 +86,27 @@ a {
 .toastui-editor-dark .toastui-editor-contents pre {
   overflow-x: auto !important;
 }
+
+.마크다운뷰어 p,
+ul {
+  color: #eee;
+}
+.마크다운뷰어 h2 {
+  color: #82b1ff;
+}
+.마크다운뷰어 h3 {
+  color: #eee;
+}
+.마크다운뷰어 strong {
+  color: #7c4dff;
+}
+.마크다운뷰어 img {
+  min-width: 46%;
+  max-width: 94%;
+}
+.마크다운뷰어 blockquote {
+  background: #222222;
+  border-left: 2px solid #4a7ed5;
+  padding: 5px 20px;
+  margin: 10px 0;
+}

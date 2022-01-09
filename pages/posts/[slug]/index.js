@@ -2,15 +2,26 @@ import dynamic from "next/dynamic";
 import { PrismaClient } from "@prisma/client";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
+import { marked } from "marked";
+import hljs from "highlight.js";
+import "highlight.js/styles/atom-one-dark.css";
 import Comment from "../../../components/common/comment";
 import styles from "../../../styles/Post.module.scss";
 import Tag from "../../../components/common/tag";
 import Date from "../../../components/common/date";
 import Head from "next/head";
 
-const Viewer = dynamic(() => import("../../../components/common/viewer"), {
-  ssr: false,
+marked.setOptions({
+  highlight: function (code, lang) {
+    const language = hljs.getLanguage(lang) ? lang : "plaintext";
+    return hljs.highlight(code, { language }).value;
+  },
+  langPrefix: "hljs language-", // highlight.js css expects a top-level 'hljs' class.
 });
+
+// const Viewer = dynamic(() => import("../../../components/common/viewer"), {
+//   ssr: false,
+// });
 
 export default function Post({ post }) {
   const router = useRouter();
@@ -39,7 +50,11 @@ export default function Post({ post }) {
           <Date createdAt={post.createdAt} />
           <Tag tags={post.tag} />
         </div>
-        <Viewer content={post.content} />
+        <div
+          className="마크다운뷰어"
+          dangerouslySetInnerHTML={{ __html: marked.parse(post.content) }}
+        ></div>
+        {/* <Viewer content={post.content} /> */}
         <Comment repo="Joon1313/camlog-comments" />
       </article>
     </>
