@@ -10,7 +10,6 @@ class MyDocument extends Document {
     return (
       <Html lang="ko">
         <Head>
-          <meta charset="utf-8" />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="Camlog" />
           <meta name="Keywords" content="Camlog" />
