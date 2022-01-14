@@ -101,7 +101,8 @@ export default function Write() {
   return (
     <>
       <Head>
-        <title>Camlog - write</title>
+        <title>Camlog - 글 작성</title>
+        <meta name="robots" content="noindex" />
       </Head>
       <Input
         placeholder="제목"

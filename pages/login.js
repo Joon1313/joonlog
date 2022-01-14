@@ -51,9 +51,10 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Camlog - Login</title>
+        <title>Camlog - 로그인</title>
         <meta name="description" content="login page" />
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="noindex" />
       </Head>
       <Box
         component="form"
