@@ -17,29 +17,8 @@ export default async function handler(req, res) {
       "Set-Cookie",
       `auth=${token}; path=/; httpOnly=true; max-age=999999999;`
     );
-    res.status(307).json({ message: "success" });
+    res.status(307).json({ message: "success", error: null });
   } catch (err) {
-    return res.status(400).json(err);
+    return res.status(400).json({ error: err.message });
   }
 }
-
-//craete
-// export default async function handler(req, res) {
-//   if (req.method === "POST") {
-//     const { user_id, password } = req.body;
-//     if (!user_id || !password)
-//       return res.status(400).json({ message: "user_id or password empty" });
-//     try {
-//       const hash = await argon2.hash(password);
-//       const auth = await prisma.admin.create({
-//         data: {
-//           user_id,
-//           password: hash,
-//         },
-//       });
-//       return res.status(200).json(auth);
-//     } catch (err) {
-//       return res.status(400).json({ message: "argon2 hash fail.." });
-//     }
-//   }
-// }

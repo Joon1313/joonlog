@@ -1,7 +1,5 @@
 import { getLoginSession } from "../../libs/auth";
 import { createPost, updatePost } from "../../libs/post";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
 
 export default async function handler(req, res) {
   const { title, content, tag, preview, slug, id } = req.body;
@@ -10,7 +8,7 @@ export default async function handler(req, res) {
   try {
     await getLoginSession(req);
   } catch (err) {
-    res.status(401).json({ message: `${err}` });
+    res.status(401).json({ error: err.message });
     return;
   }
   switch (req.method) {
@@ -31,9 +29,7 @@ export default async function handler(req, res) {
       }
       break;
     default:
-      return res
-        .status(405)
-        .json({ message: `Method ${req.method} Not Allowed` });
+      res.status(405).json({ message: `Method ${req.method} Not Allowed` });
       break;
   }
 }

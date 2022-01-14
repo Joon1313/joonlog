@@ -7,5 +7,6 @@ export async function findUserbyId(id) {
       user_id: id,
     },
   });
+  if (!user) throw new Error("not found user");
   return user;
 }

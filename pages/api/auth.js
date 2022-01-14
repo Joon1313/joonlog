@@ -5,8 +5,8 @@ export default async function handler(req, res) {
   try {
     const session = await getLoginSession(req);
     const user = await findUserbyId(session._id);
-    res.status(200).json({ user: user.user_id, isLoggedIn: true });
+    res.status(200).json({ user: user.user_id, isLoggedIn: true, error: null });
   } catch (err) {
-    res.status(401).json({ isLoggedIn: false, err });
+    res.status(401).json({ isLoggedIn: false, error: err.message });
   }
 }
