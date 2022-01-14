@@ -1,7 +1,5 @@
-import * as argon2 from "argon2";
-import jwt from "jsonwebtoken";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
+import { findUserbyId } from "../../libs/user";
+import { passwordVerify, createToken } from "../../libs/auth";
 
 //auth
 export default async function handler(req, res) {
@@ -10,23 +8,16 @@ export default async function handler(req, res) {
   const { user_id, password } = req.body;
   if (!user_id || !password)
     res.status(400).json({ message: "user_id or password empty" });
-  const admin = await prisma.admin.findUnique({
-    where: {
-      user_id,
-    },
-  });
-  if (!admin) res.status(404).json({ message: "not found admin" });
   try {
-    if (await argon2.verify(admin.password, password)) {
-      const token = jwt.sign({ _id: user_id }, process.env.SECRET_KEY);
-      res.setHeader(
-        "Set-Cookie",
-        `auth=${token}; path=/; httpOnly=true; max-age=999999999;`
-      );
-      res.status(307).json({ message: "success" });
-    } else {
-      return res.status(400).json({ message: "not match !!" });
-    }
+    const user = await findUserbyId(user_id);
+    const verify = await passwordVerify(user.password, password);
+    if (!verify) throw new Error("password is not match");
+    const token = createToken(user.user_id);
+    res.setHeader(
+      "Set-Cookie",
+      `auth=${token}; path=/; httpOnly=true; max-age=999999999;`
+    );
+    res.status(307).json({ message: "success" });
   } catch (err) {
     return res.status(400).json(err);
   }

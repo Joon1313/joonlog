@@ -69,7 +69,6 @@ export default function Edit({ post }) {
     // return;
     try {
       const response = await postFetch("/api/posts", fetchObj);
-      console.log(response);
       if (!response.ok) throw response;
       goHome();
     } catch (err) {
