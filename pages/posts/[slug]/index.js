@@ -36,6 +36,10 @@ export default function Post({ post }) {
         <meta name="keywords" content={post.tag} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.preview} />
+        <link
+          rel="canonical"
+          href={`https://camlog.vercel.app/posts/${post.slug}`}
+        />
       </Head>
       <article className={styles.articleWrap}>
         <Typography

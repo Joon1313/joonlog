@@ -12,6 +12,7 @@ export default function Home({ posts }) {
         <meta property="og:title" content="Camlog" />
         <meta name="description" content="Programing Blog" />
         <meta property="og:description" content="Programing Blog" />
+        <link rel="canonical" href="https://camlog.vercel.app" />
       </Head>
       <Card posts={posts} />
     </>
