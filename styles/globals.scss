@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
+    Helvetica Neue, sans-serif;
   background-color: #111111;
 }
 //layout
@@ -110,7 +110,11 @@ ul {
 .마크다운뷰어 strong {
   color: #7c4dff;
 }
+.마크다운뷰어 a {
+  color: #00b8ff;
+}
 .마크다운뷰어 img {
+  margin-top: 20px;
   min-width: 46%;
   max-width: 94%;
 }
