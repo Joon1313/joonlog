@@ -3,7 +3,7 @@ const uploadImage = async (blob, title) => {
     const formData = new FormData();
     formData.append("blob", blob);
     formData.append("title", title);
-    const response = await fetch("api/s3", {
+    const response = await fetch("https://camlog.vercel.app/api/s3", {
       method: "POST",
       body: formData,
     });
