@@ -96,31 +96,30 @@ a {
   overflow-x: auto !important;
 }
 
-.마크다운뷰어 p,
-ul {
-  color: #eee;
-  line-height: 1.5;
-}
-.마크다운뷰어 h2 {
-  color: #82b1ff;
-}
-.마크다운뷰어 h3 {
-  color: #eee;
-}
-.마크다운뷰어 strong {
-  color: #7c4dff;
-}
-.마크다운뷰어 a {
-  color: #00b8ff;
-}
-.마크다운뷰어 img {
-  margin-top: 20px;
-  min-width: 46%;
-  max-width: 94%;
-}
-.마크다운뷰어 blockquote {
-  background: #222222;
-  border-left: 2px solid #4a7ed5;
-  padding: 5px 20px;
-  margin: 10px 0;
+.마크다운뷰어 {
+  p {
+    color: #eee;
+    line-height: 1.8;
+  };
+  ul {
+    color: #eee;
+    line-height: 1.5;
+  };
+  h2, h3 {
+    color: #eee;
+  };
+  a {
+    color: #00b8ff;
+  };
+  img {
+    margin-top: 20px;
+    min-width: 46%;
+    max-width: 94%;
+  };
+  blockquote {
+    background: #222222;
+    border-left: 2px solid #4a7ed5;
+    padding: 5px 20px;
+    margin: 10px 0;
+  }
 }

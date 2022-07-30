@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://camlog.vercel.app/
-
-# Sitemaps
-Sitemap: https://camlog.vercel.app/sitemap.xml
