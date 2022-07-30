@@ -26,10 +26,13 @@ export default async function handler(req, res) {
           resolve({ err, fields, files });
         });
       });
+      const buffer = Buffer.from(JSON.stringify(data.files.blob)).toString(
+        "base64"
+      );
       const param = {
         Bucket: process.env.BUCKET,
         Key: `${data.fields.title}/${data.files.blob.originalFilename}`,
-        Body: data.files.blob,
+        Body: buffer,
         ContentType: data.files.blob.mi,
       };
       try {
