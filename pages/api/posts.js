@@ -3,14 +3,17 @@ import { createPost, updatePost } from "../../libs/post";
 
 export default async function handler(req, res) {
   const { title, content, tag, preview, slug, id } = req.body;
+
   if (!title || !content || !tag || !preview || !slug)
     return res.status(400).json({ message: "params is empty" });
+
   try {
     await getLoginSession(req);
   } catch (err) {
     res.status(401).json({ error: err.message });
     return;
   }
+
   switch (req.method) {
     case "POST":
       try {

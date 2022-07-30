@@ -1,24 +1,16 @@
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { s3 } from "./s3Client";
-
-const makeParams = (blob, title) => {
-  const param = {
-    Bucket: process.env.BUCKET,
-    Key: `${title}/${blob.name}`,
-    Body: blob,
-    ContentType: blob.type,
-  };
-  return param;
-};
-
-const uploadImage = async (param) => {
+const uploadImage = async (blob, title) => {
   try {
-    await s3.send(new PutObjectCommand(param));
-    const location = process.env.S3_URL + param.Key;
-    return location;
+    const formData = new FormData();
+    formData.append("blob", blob);
+    formData.append("title", title);
+    const response = await fetch("http://localhost:3000/api/s3", {
+      method: "POST",
+      body: formData,
+    });
+    return response;
   } catch (err) {
-    console.log("Error", err);
+    console.log("aws s3 error", err);
   }
 };
 
-export { makeParams, uploadImage };
+export { uploadImage };
