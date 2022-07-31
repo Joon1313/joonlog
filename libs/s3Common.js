@@ -15,7 +15,7 @@ const uploadImage = async (blob, title) => {
       title,
       name,
     };
-    const response = await fetch("http://localhost:3000/api/s3", {
+    const response = await fetch("https://camlog.vercel.app/api/s3", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
