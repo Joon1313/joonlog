@@ -34,7 +34,7 @@ export default async function handler(req, res) {
         Bucket: process.env.BUCKET,
         Key: uploadPath,
         Body: buffer,
-        ContentType: data.files.blob.mi,
+        ContentType: data.files.blob.mimetype,
       };
       try {
         await s3.send(new PutObjectCommand(param));
