@@ -39,11 +39,11 @@ export default async function handler(req, res) {
       try {
         await s3.send(new PutObjectCommand(param));
         const location = process.env.S3_URL + param.Key;
-        return location;
+        res.status(200).json({ message: "success", location: location });
       } catch (err) {
         console.log("aws s3 error", err);
+        res.status(400).json({ message: "s3 error" });
       }
-      res.status(200).json({ message: "success", key: uploadPath });
       break;
     default:
       res.status(405).json({ message: `Method ${req.method} Not Allowed` });

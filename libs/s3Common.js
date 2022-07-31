@@ -7,7 +7,7 @@ const uploadImage = async (blob, title) => {
       method: "POST",
       body: formData,
     });
-    return response.body.key;
+    return response.body.location;
   } catch (err) {
     console.log("aws s3 error", err);
   }
