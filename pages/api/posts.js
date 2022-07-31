@@ -18,6 +18,7 @@ export default async function handler(req, res) {
     case "POST":
       try {
         const post = await createPost(req.body);
+        await fetch(process.env.VERCEL_WEBHOOK);
         res.status(200).json({ message: "success", response: post });
       } catch (err) {
         res.status(400).json(err);
