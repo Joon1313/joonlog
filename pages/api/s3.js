@@ -12,7 +12,7 @@ const s3 = new S3Client({
 export default async function handler(req, res) {
   switch (req.method) {
     case "POST":
-      const { title, name, base64 } = req.body;
+      const { title = "default", name, base64 } = req.body;
       const type = base64.split(";")[0].split("/")[1];
       const buffer = Buffer.from(
         base64.replace(/^data:image\/\w+;base64,/, ""),
