@@ -29,9 +29,10 @@ export default async function handler(req, res) {
       const buffer = Buffer.from(JSON.stringify(data.files.blob)).toString(
         "base64"
       );
+      const uploadPath = `${data.fields.title}/${data.files.blob.originalFilename}`;
       const param = {
         Bucket: process.env.BUCKET,
-        Key: `${data.fields.title}/${data.files.blob.originalFilename}`,
+        Key: uploadPath,
         Body: buffer,
         ContentType: data.files.blob.mi,
       };
@@ -42,6 +43,7 @@ export default async function handler(req, res) {
       } catch (err) {
         console.log("aws s3 error", err);
       }
+      res.status(200).json({ message: "success", key: uploadPath });
       break;
     default:
       res.status(405).json({ message: `Method ${req.method} Not Allowed` });
