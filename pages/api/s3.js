@@ -8,33 +8,23 @@ const s3 = new S3Client({
     secretAccessKey: process.env.SECRET_KEY,
   },
 });
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export default async function handler(req, res) {
   switch (req.method) {
     case "POST":
-      const data = await new Promise((resolve, reject) => {
-        const form = formidable.IncomingForm({ multiples: true });
-        form.parse(req, (err, fields, files) => {
-          if (err) {
-            reject({ err });
-          }
-          resolve({ err, fields, files });
-        });
-      });
-      const buffer = Buffer.from(JSON.stringify(data.files.blob)).toString(
+      const { title, name, base64 } = req.body;
+      const type = base64.split(";")[0].split("/")[1];
+      const buffer = Buffer.from(
+        base64.replace(/^data:image\/\w+;base64,/, ""),
         "base64"
       );
-      const uploadPath = `${data.fields.title}/${data.files.blob.originalFilename}`;
+      const uploadPath = `${title}/${name}`;
       const param = {
         Bucket: process.env.BUCKET,
         Key: uploadPath,
         Body: buffer,
-        ContentType: data.files.blob.mimetype,
+        ContentEncoding: "base64",
+        ContentType: `image/${type}`,
       };
       try {
         await s3.send(new PutObjectCommand(param));
