@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   switch (req.method) {
     case "POST":
       const data = await new Promise((resolve, reject) => {
-        const form = formidable({ multiples: true });
+        const form = formidable.IncomingForm({ multiples: true });
         form.parse(req, (err, fields, files) => {
           if (err) {
             reject({ err });
