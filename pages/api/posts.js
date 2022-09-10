@@ -2,10 +2,9 @@ import { getLoginSession } from "../../libs/auth";
 import { createPost, updatePost } from "../../libs/post";
 
 export default async function handler(req, res) {
-  const { title, content, tag, preview, slug, id } = req.body;
+  const { title, content, tag, preview, slug } = req.body;
 
-  if (!title || !content || !tag || !preview || !slug)
-    return res.status(400).json({ message: "params is empty" });
+  if (!title || !content || !tag || !preview || !slug) return res.status(400).json({ message: "params is empty" });
 
   try {
     await getLoginSession(req);

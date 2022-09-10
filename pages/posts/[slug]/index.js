@@ -9,7 +9,7 @@ import styles from "../../../styles/Post.module.scss";
 import Tag from "../../../components/common/tag";
 import Date from "../../../components/common/date";
 import Head from "next/head";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 marked.setOptions({
   highlight: function (code, lang) {
@@ -24,14 +24,12 @@ marked.setOptions({
 // });
 
 export default function Post({ post }) {
-    const router = useRouter();
-    const [idList, setIdList] = useState([]);
-    useEffect(() =>{
-    const el = [...document.getElementById('viewer').children]
-                    .filter((child) => child.id)
-        .map((child) => child.id);
-      setIdList(el)
-  },[])
+  const router = useRouter();
+  const [idList, setIdList] = useState([]);
+  useEffect(() => {
+    const el = [...document.getElementById("viewer").children].filter((child) => child.id).map((child) => child.id);
+    setIdList(el);
+  }, []);
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -43,18 +41,10 @@ export default function Post({ post }) {
         <meta name="keywords" content={post.tag} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.preview} />
-        <link
-          rel="canonical"
-          href={`https://camlog.vercel.app/posts/${post.slug}`}
-        />
+        <link rel="canonical" href={`https://camlog.vercel.app/posts/${post.slug}`} />
       </Head>
       <article className={styles.articleWrap}>
-        <Typography
-          variant="h4"
-          component="h1"
-          align="center"
-          className={styles.postTitle}
-        >
+        <Typography variant="h4" component="h1" align="center" className={styles.postTitle}>
           {post.title}
         </Typography>
         <div className={styles.description}>
@@ -68,11 +58,15 @@ export default function Post({ post }) {
         ></div>
         {/* <Viewer content={post.content} /> */}
         <Comment repo="Joon1313/camlog-comments" />
-      <div className={styles.sideBar}>
-        {idList.map((id) => {
-          return (<a href={`${location.pathname}#${id}`} key={id}>{id}</a>)
-        })}
-      </div>
+        <div className={styles.sideBar}>
+          {idList.map((id) => {
+            return (
+              <a href={`${location.pathname}#${id}`} key={id}>
+                {id}
+              </a>
+            );
+          })}
+        </div>
       </article>
     </>
   );
