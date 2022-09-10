@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { PrismaClient } from "@prisma/client";
 import { Typography } from "@mui/material";
 import { useRouter } from "next/router";
@@ -10,6 +9,7 @@ import styles from "../../../styles/Post.module.scss";
 import Tag from "../../../components/common/tag";
 import Date from "../../../components/common/date";
 import Head from "next/head";
+import {useEffect, useState} from "react";
 
 marked.setOptions({
   highlight: function (code, lang) {
@@ -24,7 +24,14 @@ marked.setOptions({
 // });
 
 export default function Post({ post }) {
-  const router = useRouter();
+    const router = useRouter();
+    const [idList, setIdList] = useState([]);
+    useEffect(() =>{
+    const el = [...document.getElementById('viewer').children]
+                    .filter((child) => child.id)
+        .map((child) => child.id);
+      setIdList(el)
+  },[])
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -55,11 +62,17 @@ export default function Post({ post }) {
           <Tag tags={post.tag} />
         </div>
         <div
+          id="viewer"
           className="마크다운뷰어"
           dangerouslySetInnerHTML={{ __html: marked.parse(post.content) }}
         ></div>
         {/* <Viewer content={post.content} /> */}
         <Comment repo="Joon1313/camlog-comments" />
+      <div className={styles.sideBar}>
+        {idList.map((id) => {
+          return (<a href={`${location.pathname}#${id}`} key={id}>{id}</a>)
+        })}
+      </div>
       </article>
     </>
   );

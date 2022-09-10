@@ -2,6 +2,7 @@
 .articleWrap {
   max-width: 800px;
   margin: auto;
+  position: relative;
 }
 
 //post
@@ -20,4 +21,29 @@
   margin-bottom: 30px;
   padding-left: 10px;
   padding-right: 5px;
+}
+
+.sideBar {
+  position: fixed;
+  right: 200px;
+  top: 200px;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  border:1px solid #555;
+  border-radius: 10px;
+  gap:5px;
+  > a {
+    cursor: pointer;
+    &:hover{
+      color:#fff;
+    }
+    color: #777;
+  }
+}
+
+@media (max-width: 1710px) {
+  .sideBar {
+    display: none;
+  }
 }
