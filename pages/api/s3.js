@@ -23,7 +23,7 @@ export default async function handler(req, res) {
     };
     try {
       await s3.send(new PutObjectCommand(param));
-      const location = process.env.S3_URL + param.Key;
+      const location = encodeURI(process.env.S3_URL + param.Key);
       res.status(200).json({ message: "success", location: location });
     } catch (err) {
       console.log("aws s3 error", err);
