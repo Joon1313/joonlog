@@ -11,8 +11,8 @@ class MyDocument extends Document {
       <Html lang="ko">
         <Head>
           <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="Camlog" />
-          <meta name="Keywords" content="Camlog" />
+          <meta property="og:site_name" content="JoonLog" />
+          <meta name="Keywords" content="JoonLog" />
           <meta name="author" content="Camon" />
           <link rel="icon" href="/favicon.ico" />
 

@@ -6,11 +6,11 @@ export default function Home({ posts }) {
   return (
     <>
       <Head>
-        <title>Camlog</title>
-        <meta property="og:title" content="Camlog" />
-        <meta name="description" content="Programing Blog" />
-        <meta property="og:description" content="Programing Blog" />
-        <link rel="canonical" href="https://camlog.vercel.app" />
+        <title>JoonLog</title>
+        <meta property="og:title" content="Joonlog" />
+        <meta name="description" content="dev blog" />
+        <meta property="og:description" content="dev blog" />
+        <link rel="canonical" href="https://joonlog.vercel.app" />
       </Head>
       <Card posts={posts} />
     </>

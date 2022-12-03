@@ -41,7 +41,7 @@ export default function Post({ post }) {
         <meta name="keywords" content={post.tag} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.preview} />
-        <link rel="canonical" href={`https://camlog.vercel.app/posts/${post.slug}`} />
+        <link rel="canonical" href={`https://joonlog.vercel.app/posts/${post.slug}`} />
       </Head>
       <article className={styles.articleWrap}>
         <Typography variant="h4" component="h1" align="center" className={styles.postTitle}>
@@ -57,7 +57,7 @@ export default function Post({ post }) {
           dangerouslySetInnerHTML={{ __html: marked.parse(post.content) }}
         ></div>
         {/* <Viewer content={post.content} /> */}
-        <Comment repo="Joon1313/camlog-comments" />
+        <Comment repo="Joon1313/joonlog-comments" />
         <div className={styles.sideBar}>
           {idList.map((id) => {
             return (

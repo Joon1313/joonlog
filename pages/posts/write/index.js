@@ -22,8 +22,7 @@ const postFetch = async (url, { ...arg }) => {
 
 export async function getServerSideProps(ctx) {
   const token = ctx.req.cookies.auth;
-  // const res = await fetch("https://camlog.vercel.app/api/auth");
-  const res = await fetch("https://camlog.vercel.app/api/auth", {
+  const res = await fetch("https://joonlog.vercel.app/api/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -101,7 +100,7 @@ export default function Write() {
   return (
     <>
       <Head>
-        <title>Camlog - 글 작성</title>
+        <title>JoonLog - 글 작성</title>
         <meta name="robots" content="noindex" />
       </Head>
       <Input

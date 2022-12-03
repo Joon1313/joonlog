@@ -6,7 +6,7 @@ export default function Header() {
   return (
     <header id="header">
       <Container maxWidth="lg" id="header_box" component="nav">
-        <Link href="/">Camlog</Link>
+        <Link href="/">JoonLog</Link>
         <div id="nav">
           <a
             target="_blank"

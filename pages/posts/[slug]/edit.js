@@ -80,7 +80,7 @@ export default function Edit({ post }) {
       {user && isLoggedIn && (
         <>
           <Head>
-            <title>Camlog - 글 수정</title>
+            <title>JoonLog - 글 수정</title>
             <meta name="robots" content="noindex" />
           </Head>
           <Input

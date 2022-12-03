@@ -5,8 +5,7 @@ import { useRouter } from "next/router";
 
       export async function getServerSideProps(ctx) {
   const token = ctx.req.cookies.auth;
-  // const res = await fetch("https://camlog.vercel.app/api/auth");
-  const res = await fetch("https://camlog.vercel.app/api/auth", {
+  const res = await fetch("https://joonlog.vercel.app/api/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +50,7 @@ export default function Login() {
   return (
     <>
       <Head>
-        <title>Camlog - 로그인</title>
+        <title>JoonLog - 로그인</title>
         <meta name="description" content="login page" />
         <link rel="icon" href="/favicon.ico" />
         <meta name="robots" content="noindex" />
