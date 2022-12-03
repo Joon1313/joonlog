@@ -25,8 +25,9 @@
 
 .sideBar {
   position: fixed;
-  right: 200px;
+  right: 150px;
   top: 200px;
+  max-width: 320px;
   padding: 20px 20px;
   display: flex;
   flex-direction: column;

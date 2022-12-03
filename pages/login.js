@@ -3,7 +3,7 @@ import Head from "next/head";
 import { TextField, Box, Button } from "@mui/material";
 import { useRouter } from "next/router";
 
-export async function getServerSideProps(ctx) {
+      export async function getServerSideProps(ctx) {
   const token = ctx.req.cookies.auth;
   // const res = await fetch("https://camlog.vercel.app/api/auth");
   const res = await fetch("https://camlog.vercel.app/api/auth", {

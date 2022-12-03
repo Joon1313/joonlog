@@ -1,0 +1,12 @@
+{
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        }
+    },
+    "volar.completion.preferredAttrNameCase": "camel",
+    "files.associations": {
+        "*.js": "javascriptreact"
+      },
+}
