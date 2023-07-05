@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://joonlog.vercel.app/sitemap.xml
